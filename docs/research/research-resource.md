@@ -2,6 +2,8 @@
 
 This document is a living resource for agents to inform product development, marketing copy, and design decisions for the **Family Caregiver Command & Facility System (FCCS)**.
 
+---
+
 ## 1. Market Trends & High-Demand Features (Etsy 2026)
 
 ### A. Outcome-Driven Ecosystems
@@ -39,7 +41,35 @@ This document is a living resource for agents to inform product development, mar
 
 ---
 
-## 3. B2B & Facility Compliance (FCCS Pro)
+## 3. Deep Research & Orthogonal Ideas
+
+### A. Recipient Agency (Self-Determination Theory)
+*   **Autonomy-Supportive Design:** Shift from "managing the senior" to "co-authoring care." Include sections where the senior documents their own "What Matters Most."
+*   **Competence Anchors:** Design tools that seniors can use directly (e.g., simplified large-print "Today's Plan") to foster a sense of mastery over their environment.
+*   **Dignity Preservation:** Every form should have a "Legacy/Identity" component—reminding caregivers who the person *is*, not just what they *need*.
+
+### B. Technical Interoperability (FHIR & PGHD)
+*   **"FHIR-Ready" Templates:** Structure digital data (Sheets/Notion) to match **HL7 FHIR v6.1** Observation resources.
+*   **Write-Back Capability:** Position our tools as the bridge to clinical EHRs via the 2026 **CMS Patient Access APIs**.
+*   **USCDI v3 Compliance:** Ensure trackers include classes for **Social Determinants of Health (SDOH)**.
+
+### C. Legal Defense (The "Medicaid Shield")
+*   **The 60-Month Look-Back:** Positioning trackers as **essential evidence** for the "Caregiver Child Exemption."
+*   **Personal Care Agreements:** Include templates for "Personal Care Agreements" (Caregiver Contracts) to ensure family payments are not flagged as "improper transfers."
+*   **Automated Audit Trails:** Timestamped logs are the gold standard for defending against Medicaid transfer penalties.
+
+### D. Psychological UX (Cognitive Load Theory)
+*   **Bandwidth Preservation:** Design for high-stress "Emergency Mode." Strip away non-essential UI; use high-contrast Triage Colors (Red/Yellow/Green).
+*   **Spatial Memory:** Keep critical action buttons in fixed "muscle-memory" locations.
+*   **Progressive Disclosure:** Hide complex fields (e.g., insurance codes) until the AI or user explicitly needs them.
+
+### E. Social Prescribing (The Loneliness Antidote)
+*   **Connection Logs:** Track "Social Vitals" (laughter, visits, phone calls) as a clinical indicator of health.
+*   **"Purpose-Driven" Tasks:** Include modules for the senior to "give back" (e.g., skill-sharing, recording oral histories) to combat the "loss of role."
+
+---
+
+## 4. B2B & Facility Compliance (FCCS Pro)
 
 ### A. Regulatory Milestones (2026)
 *   **FGI 2026 Mandate:** **90% single-occupancy rooms** for infection control and privacy in new residential care settings.
@@ -52,7 +82,7 @@ This document is a living resource for agents to inform product development, mar
 
 ---
 
-## 4. Key Reference Channels & Sources
+## 5. Key Reference Channels & Sources
 
 ### YouTube (Daily Intelligence)
 *   **[Family Caregiver Alliance](https://www.youtube.com/@familycaregiveralliance):** Legal planning and systems.
@@ -67,7 +97,7 @@ This document is a living resource for agents to inform product development, mar
 
 ---
 
-## 5. Actionable Prompts for Agents
-*   "Review the `research-resource.md` to find a specific condition-specific kit idea for our next Etsy listing."
-*   "Incorporate the 'Home as a Sanctuary' color palette into the design of the Sibling Equity Tracker."
-*   "Draft a sales email for B2B facility owners focusing on the 'FGI 2026 Single Occupancy' and 'Digital Accessibility' deadlines."
+## 6. Actionable Prompts for Agents
+*   "Review Section 3C to ensure the Sibling Equity Tracker includes audit trails suitable for Medicaid look-back defense."
+*   "Incorporate 'Autonomy-Supportive' fields from Section 3A into the new Resident Intake form."
+*   "Apply the CLT patterns in Section 3D to the 'Emergency Go-Bag' digital interface."
