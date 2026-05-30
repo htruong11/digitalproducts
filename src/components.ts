@@ -111,6 +111,7 @@ export function renderFooter(): string {
     <footer class="footer">
       <div class="container">
         <p>Internal draft — not for distribution &nbsp;·&nbsp; ${new Date().getFullYear()}</p>
+        <p class="footer-updated">Last updated: 2026-05-30</p>
       </div>
     </footer>
   `;
