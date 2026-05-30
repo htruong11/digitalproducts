@@ -1,4 +1,4 @@
-import type { ChecklistCategory, ResearchNote } from './data';
+import type { ChecklistCategory, ResearchNote } from "./data";
 
 export function renderHero(title: string, subtitle: string): string {
   return `
@@ -17,7 +17,7 @@ export function renderHero(title: string, subtitle: string): string {
 }
 
 export function renderProblem(points: string[]): string {
-  const items = points.map(p => `<li>${p}</li>`).join('');
+  const items = points.map((p) => `<li>${p}</li>`).join("");
   return `
     <section class="problem">
       <div class="container">
@@ -30,12 +30,16 @@ export function renderProblem(points: string[]): string {
 }
 
 export function renderCategoryCard(cat: ChecklistCategory): string {
-  const items = cat.items.map(item => `
+  const items = cat.items
+    .map(
+      (item) => `
     <li class="check-item">
       <span class="check-box"></span>
       <span>${item}</span>
     </li>
-  `).join('');
+  `,
+    )
+    .join("");
 
   return `
     <div class="category-card">
@@ -53,7 +57,7 @@ export function renderCategoryCard(cat: ChecklistCategory): string {
 }
 
 export function renderChecklist(categories: ChecklistCategory[]): string {
-  const cards = categories.map(renderCategoryCard).join('');
+  const cards = categories.map(renderCategoryCard).join("");
   return `
     <section class="checklist" id="checklist">
       <div class="container">
@@ -65,14 +69,20 @@ export function renderChecklist(categories: ChecklistCategory[]): string {
   `;
 }
 
-export function renderBenefits(benefits: { icon: string; title: string; text: string }[]): string {
-  const cards = benefits.map(b => `
+export function renderBenefits(
+  benefits: { icon: string; title: string; text: string }[],
+): string {
+  const cards = benefits
+    .map(
+      (b) => `
     <div class="benefit-card">
       <span class="benefit-icon">${b.icon}</span>
       <h3>${b.title}</h3>
       <p>${b.text}</p>
     </div>
-  `).join('');
+  `,
+    )
+    .join("");
 
   return `
     <section class="benefits">
@@ -85,12 +95,16 @@ export function renderBenefits(benefits: { icon: string; title: string; text: st
 }
 
 export function renderResearchNotes(notes: ResearchNote[]): string {
-  const rows = notes.map(n => `
+  const rows = notes
+    .map(
+      (n) => `
     <div class="note-row">
       <span class="note-label">${n.label}</span>
       <p class="note-content">${n.content}</p>
     </div>
-  `).join('');
+  `,
+    )
+    .join("");
 
   return `
     <section class="research" id="research">

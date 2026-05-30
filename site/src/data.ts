@@ -11,7 +11,8 @@ export interface ResearchNote {
 }
 
 export const PRODUCT_TITLE = "Elderly Home Care Checklist";
-export const PRODUCT_SUBTITLE = "A complete system for families & caregivers to organize, track, and simplify daily home care for aging loved ones.";
+export const PRODUCT_SUBTITLE =
+  "A complete system for families & caregivers to organize, track, and simplify daily home care for aging loved ones.";
 
 export const PROBLEM_POINTS: string[] = [
   "Worried you're forgetting something important in daily care routines?",
@@ -116,26 +117,32 @@ export const BENEFITS: { icon: string; title: string; text: string }[] = [
 export const RESEARCH_NOTES: ResearchNote[] = [
   {
     label: "Target Audience",
-    content: "Adult children (35–60) acting as primary caregivers for an aging parent at home. Often juggling work, their own family, and caregiving. May be long-distance.",
+    content:
+      "Adult children (35–60) acting as primary caregivers for an aging parent at home. Often juggling work, their own family, and caregiving. May be long-distance.",
   },
   {
     label: "Core Pain Point",
-    content: "Fear of missing something critical. Decision fatigue. Coordination friction when multiple people are involved in care.",
+    content:
+      "Fear of missing something critical. Decision fatigue. Coordination friction when multiple people are involved in care.",
   },
   {
     label: "Competing Products",
-    content: "Generic caregiver apps (CareZone, CaringBridge), generic PDF checklists on care blogs. Gap: nothing that's printable + digital + organized by category.",
+    content:
+      "Generic caregiver apps (CareZone, CaringBridge), generic PDF checklists on care blogs. Gap: nothing that's printable + digital + organized by category.",
   },
   {
     label: "Potential Formats",
-    content: "PDF checklist bundle, Notion template, printable binder inserts. Consider a tiered product: free sample category + paid full bundle.",
+    content:
+      "PDF checklist bundle, Notion template, printable binder inserts. Consider a tiered product: free sample category + paid full bundle.",
   },
   {
     label: "Pricing Research",
-    content: "Similar digital products on Etsy: $5–$25. Notion templates: $10–$30. Could bundle with a 'caregiver's guide' doc for higher price point.",
+    content:
+      "Similar digital products on Etsy: $5–$25. Notion templates: $10–$30. Could bundle with a 'caregiver's guide' doc for higher price point.",
   },
   {
     label: "Content To Write",
-    content: "Full checklist items for each category (draft above is ~5 items each, expand to 15–20). Add a 'Getting Started' guide. Add emergency info sheet template.",
+    content:
+      "Full checklist items for each category (draft above is ~5 items each, expand to 15–20). Add a 'Getting Started' guide. Add emergency info sheet template.",
   },
 ];
