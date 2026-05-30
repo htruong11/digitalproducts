@@ -11,13 +11,16 @@ source: IMP-001, IMP-002, local agent CLI audit, May 2026 marketplace/agent rese
 ## Abstract
 
 Build a small, daily agent workforce around the caregiver digital product
-business. The goal is not full autonomy. The goal is a reliable system where
-agents wake up, collect marketplace evidence, propose product/listing changes,
-generate assets, run checks, and leave a concise approval packet for the human.
+business. The goal is **full autonomy for reversible actions, earned**: agents
+wake up, collect marketplace evidence, decide one change, and either publish it
+themselves (once that action class has earned the right) or leave a concise
+approval packet for the human. Autonomy is granted per action class by
+reversibility and track record, not all at once.
 
 The highest-probability path is a Mac Mini scheduled workflow using local agent
-CLIs, repo-owned skills, marketplace APIs, and strict human gates for public
-publishing, refunds, account settings, payout, tax, and policy-sensitive claims.
+CLIs, repo-owned skills, marketplace APIs, an automated safety gate with
+rollback and a kill switch, and **hard human gates only for the irreversible**:
+spend/ads, refunds, account, payout, tax, and policy-sensitive claims.
 
 As of 2026-05-30, the best stack is:
 
@@ -43,14 +46,22 @@ In scope:
   maintenance.
 - Define a Mac Mini production loop agents can run daily.
 - Define agent skills worth building for this repo.
-- Separate proposed/draft actions from human-only irreversible actions.
+- **Fully autonomous publishing of reversible actions** — listing edits,
+  publish/renew, and marketing posts to Etsy, Gumroad, Pinterest, and Bluesky —
+  under a graduated-autonomy model: agents earn auto-publish rights per action
+  class after a supervised track record, behind an automated safety gate, with
+  rollback, audit, and a kill switch (see Autonomy Tiers).
+- Separate reversible auto-eligible actions from irreversible human-only
+  actions (money, account, tax, legal/medical claims).
 
 Out of scope:
 
-- Fully autonomous publishing to Etsy, Gumroad, Shopify, Pinterest, or ads.
+- Autonomous actions that move money or are irreversible: ads/promoted spend,
+  refunds, payouts, tax, account/2FA/OAuth/policy changes.
+- Autonomous customer-specific replies or buyer-data handling.
 - Browser scraping that violates marketplace terms.
-- Customer message automation without review.
-- Replacing the core IMP-001 sales gate: first prove one Etsy product.
+- Replacing the core IMP-001 sales gate: first prove one Etsy product before
+  granting any auto-publish rights.
 
 ## Findings
 
@@ -105,10 +116,12 @@ Out of scope:
     server teaches agents the API spec but does not call Etsy directly. A small
     project-owned `etsyctl` wrapper is the safest production path.
 
-11. **Etsy API coverage is enough for draft listing automation.** The API
+11. **Etsy API coverage is enough for full listing automation.** The API
     supports listing lifecycle, `createDraftListing`, listing image upload,
-    digital file upload via `uploadListingFile`, and setting `type=download`.
-    The human should still approve publish.
+    digital file upload via `uploadListingFile`, setting `type=download`, and
+    `updateListing`/publish state — and an `updateListing` can revert a change,
+    which is what makes listing edits a reversible (Tier-1) auto-eligible class.
+    Publish is supervised first, then graduates (findings 28–29).
 
 12. **Gumroad has the best CLI story for a second storefront.** Gumroad's API
     page documents a command-line tool, OAuth scopes, products, sales, payouts,
@@ -129,10 +142,11 @@ Out of scope:
     scripts, and references only when needed. This repo should package the
     repeatable seller workflows as skills before writing a large app.
 
-16. **Most marketplace writes should be two-step.** Agents can create local
-    diffs, draft listing payloads, draft Gumroad product updates, and proposed
-    pin batches. They should not publish, change payout/tax/account settings,
-    issue refunds, or answer sensitive customer messages without human approval.
+16. **Marketplace writes start two-step, then graduate.** Every action class
+    begins supervised — agents create diffs, draft payloads, and proposed pin
+    batches for approval. Reversible classes then earn autonomous publishing
+    (findings 28–29). Money/account/tax/refund/sensitive-reply actions never
+    graduate and stay human-only (Tier 2).
 
 17. **We should not hand-build the scheduler, state store, or delivery layer.**
     A local OpenClaw install (`OpenClaw 2026.5.12`, 53 skills) already provides
@@ -254,18 +268,53 @@ Out of scope:
     and the `npm run check` + IndexNow + structured-data approach becomes a
     reusable `geo-content-site` skill.
 
+28. **Full autonomy is the goal for reversible actions, earned per action class.**
+    The objective is agents that publish without waiting on a human — but trust
+    is granted by reversibility and by track record, not all at once. The gating
+    test is one question: _can this be undone in minutes with no money moved and
+    no legal exposure?_
+    - **Reversible** (listing title/tag/description/image edits, publish/renew,
+      price changes within a pre-approved band, Pinterest/Bluesky posts, GEO
+      content-site deploys) → **auto-publish eligible** once the action class has
+      passed a supervised run.
+    - **Irreversible or money/legal** (ad spend, refunds, payouts, tax, account/
+      2FA/OAuth/policy, customer-specific replies, any medical/legal/financial
+      claim) → **always human**, regardless of track record.
+
+    The mechanism that makes this safe is not a human in the loop on every
+    action; it is: (a) an automated **`marketplace-safety-reviewer`** that must
+    pass before any auto-publish, (b) **rollback** — every autonomous change
+    records the prior state so it can be reverted in one command, (c) a full
+    **audit ledger** (OpenClaw `tasks`), (d) a **kill switch** (one flag/standing
+    order that drops every loop back to draft-only), and (e) **bounded blast
+    radius** — caps like "≤N autonomous listing edits/day," "price only within
+    ±X% of a human-set floor/ceiling," and "new action classes start supervised."
+
+29. **Autonomy is earned by graduating, not declared.** Each action class moves
+    through three states: **supervised** (agent drafts, human approves N times)
+    → **shadow** (agent would auto-publish; human still confirms but only to
+    catch regressions) → **autonomous** (agent publishes, safety gate + rollback
+    - caps only). A class auto-demotes to supervised on a safety-reviewer block,
+      a reverted change, or a metric regression past threshold. This is the path
+      that satisfies IMP-001's "prove one Etsy product first": the first product
+      is published supervised; autonomy is granted afterward.
+
 ## Decision
 
-Create a daily "Agent Employment System" with a conservative promotion path:
+Create a daily "Agent Employment System" with a graduated-autonomy promotion
+path:
 
-1. **Local daily ops first.** Mac Mini `launchd` runs one orchestrator job every
-   morning and writes a dated report.
-2. **Draft-only marketplace automation.** Agents prepare Etsy/Gumroad payloads
-   and local files. Human approval is required before publish.
+1. **Local daily ops first.** A scheduled orchestrator (OpenClaw cron, finding 17) runs every morning and writes a dated report plus a Telegram packet.
+2. **Graduated marketplace autonomy.** Agents start draft-only, then earn
+   auto-publish rights per reversible action class (listing edits, publish/
+   renew, in-band price, marketing posts) by graduating supervised → shadow →
+   autonomous. Every autonomous action passes the automated safety reviewer and
+   records rollback state. Irreversible/money/legal actions stay human-only.
 3. **Skills before apps.** Build repo-owned skills and small CLIs before using
    managed agent platforms.
 4. **Measure before expanding.** Do not add Shopify, ads, or B2B outbound until
-   the Etsy listing has real visits, favorites, messages, or sales.
+   the Etsy listing has real visits, favorites, messages, or sales — and do not
+   grant any action class autonomy until it has a clean supervised track record.
 
 ## Ranked Tooling Bets
 
@@ -304,17 +353,17 @@ Morning job, 6:30 AM Pacific:
 5. Run reviewer agent:
    - Check claims, disclaimers, readability, support burden, and policy risk.
 6. Write `docs/research/daily/YYYY-MM-DD-agent-report.md`.
-7. Leave a human approval packet:
-   - What changed.
-   - Why it is expected to improve sales.
-   - Exact files changed.
-   - Marketplace actions requiring approval.
+7. Execute and report, split by autonomy state:
+   - **Auto-published** (graduated classes): what changed, why, rollback handle,
+     and the safety-reviewer verdict — informational, no approval needed.
+   - **Awaiting approval** (supervised/shadow classes): the Telegram packet —
+     what changed, expected sales impact, exact files, the one-tap approve/skip.
 
-Use Codex `/goal` only for bounded follow-through runs spawned from the daily
-report, for example:
+Use Codex `/goal` or OpenClaw TaskFlow for bounded follow-through runs spawned
+from the daily report, for example:
 
 ```text
-/goal Complete Phase 2 Etsy draft automation without stopping until scripts/etsyctl can generate and validate one dry-run listing packet from repo files. Do not publish, change prices, or call live write endpoints except draft-only endpoints explicitly approved in the IMP.
+/goal Complete Phase 2 Etsy automation without stopping until scripts/etsyctl can generate, validate, and (for graduated action classes) publish one listing edit with recorded rollback state. Stay within the autonomy caps; never call money/account/tax/refund endpoints.
 ```
 
 Evening job, 7:30 PM Pacific:
@@ -324,21 +373,24 @@ Evening job, 7:30 PM Pacific:
 
 ## The Four Daily Loops (Sell · Market · Research · Feedback)
 
-The business needs four small, repeatable loops, each cron-scheduled and each
-ending in a draft + an approval ask — never an unattended public write. Keep
-them separate so one failing loop never blocks the others.
+The business needs four small, repeatable loops, each cron-scheduled. Each loop
+runs at the autonomy state its action class has earned (Autonomy Tiers): a class
+still supervised ends in a draft + Telegram approval ask; a graduated class
+publishes through the safety gate with rollback. Keep loops separate so one
+failing loop never blocks the others.
 
-| Loop         | Daily cadence            | Primary tools (in hand → later)                                                        | Agent output (draft only)                                                   | Human gate                         |
-| ------------ | ------------------------ | -------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ---------------------------------- |
-| **Research** | AM cheap poll + 1 deep   | Firecrawl (search/scrape/JSON), Gemini grounding, eRank/EverBee feed, context7         | Ranked keyword/competitor/review findings with source URLs + timestamps     | None (read-only)                   |
-| **Sell**     | AM, after research       | `etsyctl` (Etsy API), Gumroad CLI (later), Drive (deliver files)                       | Draft listing/payload diffs, price/title/tag/FAQ proposals, asset renders   | Publish / price / renew            |
-| **Market**   | AM draft, PM stage       | `geo-content-site` (los-cobanos pattern), IndexNow, Buttondown/Kit, Pinterest, Bluesky | Draft newsletter, draft pins, draft GEO page edits, structured-data updates | Send email / post / publish page   |
-| **Feedback** | PM, plus inbox heartbeat | Gmail MCP, Etsy/Gumroad messages, review scrape, Telegram                              | One ranked "what buyers actually said" digest → backlog items               | Customer-specific replies, refunds |
+| Loop         | Daily cadence            | Primary tools (in hand → later)                                                        | Output                                                                  | Autonomy state                                                  |
+| ------------ | ------------------------ | -------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | --------------------------------------------------------------- |
+| **Research** | AM cheap poll + 1 deep   | Firecrawl (search/scrape/JSON), Gemini grounding, eRank/EverBee feed, context7         | Ranked keyword/competitor/review findings with source URLs + timestamps | Autonomous (read-only)                                          |
+| **Sell**     | AM, after research       | `etsyctl` (Etsy API), Gumroad CLI (later), Drive (deliver files)                       | Listing/tag/FAQ/image edits, publish/renew, in-band price               | Per class: supervised → shadow → autonomous; payout/tax human   |
+| **Market**   | AM draft, PM stage       | `geo-content-site` (los-cobanos pattern), IndexNow, Buttondown/Kit, Pinterest, Bluesky | Newsletter, pins, GEO page edits, structured-data updates               | Pins/Bluesky/GEO deploys auto once graduated; email + ads human |
+| **Feedback** | PM, plus inbox heartbeat | Gmail MCP, Etsy/Gumroad messages, review scrape, Telegram                              | One ranked "what buyers actually said" digest → backlog items           | Autonomous (read-only); customer replies + refunds human        |
 
 Loop interplay: **Research feeds Sell and Market; Feedback re-prioritizes all
 three.** The daily analyst (IMP gate: one ranked recommendation, not a wishlist)
-chooses the single highest-leverage change across loops and the producer drafts
-only that.
+chooses the single highest-leverage change across loops and the producer
+executes only that — auto-publishing if the class has graduated, else drafting
+for approval.
 
 ## Orchestration & Approval Layer (use OpenClaw, don't rebuild it)
 
@@ -457,25 +509,41 @@ Do not store credentials, cookies, payout, tax, 2FA, recovery codes, or OAuth
 tokens in the repo. Store secrets in macOS Keychain, 1Password CLI, environment
 files outside the repo, or the scheduler's private environment.
 
-## Human Approval Gates
+## Autonomy Tiers
 
-Agents may do without approval:
+Actions are sorted by reversibility, not by how impressive autonomy would look.
+Each action class is promoted independently (supervised → shadow → autonomous,
+finding 29). Tier 2 is never automated.
+
+**Tier 0 — Autonomous always (read-only / local):**
 
 - Read public marketplace pages and official APIs.
-- Draft local product files, listings, tags, images, and support snippets.
-- Create Etsy/Gumroad draft payloads.
-- Summarize metrics and recommend one change.
-- Open local PRs or leave git diffs.
+- Mine reviews/competitors; summarize metrics; recommend one change.
+- Draft local product files, payloads, images, and support snippets.
+- Open local PRs / leave git diffs.
 
-Human must approve:
+\*\*Tier 1 — Autonomous once graduated (reversible writes, behind the safety gate
 
-- Publishing or renewing marketplace listings.
-- Price changes on live listings.
-- Refunds, disputes, customer-specific replies, or buyer data handling.
-- Ads, promoted listings, affiliate settings, or spend.
-- Account, payout, tax, 2FA, API app, OAuth scope, and shop policy changes.
-- Any claim that could be interpreted as medical, legal, financial, or clinical
-  advice.
+- rollback + caps):\*\*
+
+* Publish/renew marketplace listings; edit title, tags, description, images.
+* Price changes **within a human-set band** (±X% of a floor/ceiling).
+* Pinterest and Bluesky posts from approved content.
+* GEO content-site page edits and deploys (revertable via git + redeploy).
+* Each requires: `marketplace-safety-reviewer` pass, recorded prior state for
+  one-command rollback, audit ledger entry, and per-day volume caps.
+
+**Tier 2 — Human only (irreversible, money, legal, or identity):**
+
+- Ads, promoted listings, affiliate settings, or any spend.
+- Refunds, disputes, customer-specific replies, or buyer-data handling.
+- Account, payout, tax, 2FA, API app, OAuth scope, and shop-policy changes.
+- Price changes outside the approved band.
+- Any claim that could be read as medical, legal, financial, or clinical advice.
+
+**Global kill switch:** a single standing-order flag drops every loop back to
+Tier-0 draft-only. Trip it on any safety-reviewer block streak, an unexpected
+rollback, a metric regression past threshold, or manually.
 
 ## Implementation Plan
 
@@ -502,12 +570,32 @@ Success gate:
 2. [ ] Support auth check, shop read, draft listing JSON generation, image
        upload, file upload, and dry-run validation.
 3. [ ] Create `etsy-seller-ops` and `marketplace-safety-reviewer` skills.
-4. [ ] Generate draft listing update packets, but require human publish.
+4. [ ] Generate draft listing update packets, deliver to Telegram for approval.
 
 Success gate:
 
 - One complete listing draft can be generated from repo files.
 - Safety reviewer catches missing disclaimer, risky claim, or missing image.
+
+### Phase 2.5: Graduated Autonomy
+
+1. [ ] Add to `etsyctl` (and each writer): a `--rollback-capture` that records
+       prior state before any write, and an `etsyctl rollback <id>` command.
+2. [ ] Add an autonomy registry: per action class, its state (supervised /
+       shadow / autonomous), caps, and price band. Encode the kill switch as an
+       OpenClaw standing order.
+3. [ ] Require the `marketplace-safety-reviewer` to pass before any Tier-1
+       write; log every write + verdict + rollback handle to the task ledger.
+4. [ ] Graduate the first action class (listing tag/description edits) only
+       after a clean supervised track record; start it in shadow.
+
+Success gate:
+
+- A graduated action class auto-publishes a reversible change through the safety
+  gate, the change is visible live, and `etsyctl rollback` cleanly reverts it.
+- A seeded bad change (risky claim / missing disclaimer) is blocked by the
+  safety reviewer and never publishes.
+- Tripping the kill switch returns all loops to draft-only within one run.
 
 ### Phase 3: Metrics and Secondary Storefront
 
