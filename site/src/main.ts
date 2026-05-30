@@ -3,16 +3,18 @@ import {
   PRODUCT_TITLE,
   PRODUCT_SUBTITLE,
   PROBLEM_POINTS,
-  CHECKLIST_CATEGORIES,
-  BENEFITS,
-  RESEARCH_NOTES,
+  KIT_PAGES,
+  HELP_POINTS,
+  FEEDBACK_PROMPTS,
+  DISCLAIMER,
+  PRODUCT_DETAILS,
 } from "./data";
 import {
   renderHero,
   renderProblem,
-  renderChecklist,
-  renderBenefits,
-  renderResearchNotes,
+  renderInside,
+  renderHelp,
+  renderCollaborate,
   renderFooter,
 } from "./components";
 
@@ -25,9 +27,9 @@ if (!app) {
 app.innerHTML = [
   renderHero(PRODUCT_TITLE, PRODUCT_SUBTITLE),
   renderProblem(PROBLEM_POINTS),
-  renderChecklist(CHECKLIST_CATEGORIES),
-  renderBenefits(BENEFITS),
-  renderResearchNotes(RESEARCH_NOTES),
+  renderInside(KIT_PAGES),
+  renderHelp(HELP_POINTS),
+  renderCollaborate(PRODUCT_DETAILS, FEEDBACK_PROMPTS, DISCLAIMER),
   renderFooter(),
 ].join("");
 

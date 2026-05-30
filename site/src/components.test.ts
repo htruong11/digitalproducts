@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { CHECKLIST_CATEGORIES, PRODUCT_SUBTITLE, PRODUCT_TITLE } from "./data";
-import { renderChecklist, renderHero } from "./components";
+import { KIT_PAGES, PRODUCT_SUBTITLE, PRODUCT_TITLE } from "./data";
+import { renderHero, renderInside } from "./components";
 
 describe("site rendering", () => {
   it("renders the product title and subtitle in the hero", () => {
@@ -8,14 +8,14 @@ describe("site rendering", () => {
 
     expect(html).toContain(PRODUCT_TITLE);
     expect(html).toContain(PRODUCT_SUBTITLE);
-    expect(html).toContain("Internal Draft");
+    expect(html).toContain("Printable PDF");
   });
 
-  it("renders each checklist category", () => {
-    const html = renderChecklist(CHECKLIST_CATEGORIES);
+  it("renders each kit page", () => {
+    const html = renderInside(KIT_PAGES);
 
-    for (const category of CHECKLIST_CATEGORIES) {
-      expect(html).toContain(category.title);
+    for (const page of KIT_PAGES) {
+      expect(html).toContain(page.title);
     }
   });
 });

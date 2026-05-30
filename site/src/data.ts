@@ -1,148 +1,92 @@
-export interface ChecklistCategory {
-  icon: string;
+export interface MarketingItem {
   title: string;
-  description: string;
-  items: string[];
+  text: string;
 }
 
-export interface ResearchNote {
+export interface KitPage {
   label: string;
-  content: string;
+  title: string;
+  text: string;
 }
 
-export const PRODUCT_TITLE = "Elderly Home Care Checklist";
+export const PRODUCT_TITLE = "Family Caregiver Command Kit";
 export const PRODUCT_SUBTITLE =
-  "A complete system for families & caregivers to organize, track, and simplify daily home care for aging loved ones.";
+  "A simple printable kit to keep appointments, tasks, handoffs, and emergency details in one place while your family coordinates care for an aging parent.";
 
 export const PROBLEM_POINTS: string[] = [
-  "Worried you're forgetting something important in daily care routines?",
-  "Struggling to coordinate care between family members or hired help?",
-  "Unsure what safety risks to look for around the home?",
-  "Feeling overwhelmed managing medications, appointments, and daily tasks?",
+  "One person is carrying the mental list, and everyone else is asking for updates.",
+  "Appointment notes, contacts, medication details, and daily tasks live in different places.",
+  "Family handoffs happen by memory, text threads, or rushed phone calls.",
 ];
 
-export const CHECKLIST_CATEGORIES: ChecklistCategory[] = [
+export const KIT_PAGES: KitPage[] = [
   {
-    icon: "🏠",
-    title: "Home Safety",
-    description: "Identify and eliminate fall risks and hazards room by room.",
-    items: [
-      "Remove loose rugs and clutter from walkways",
-      "Install grab bars in bathroom and near toilet",
-      "Ensure adequate lighting in all rooms and hallways",
-      "Check smoke and carbon monoxide detectors",
-      "Secure stair railings and check for loose steps",
-    ],
+    label: "01",
+    title: "Start Here",
+    text: "A five-minute setup page that tells families what to fill out first.",
   },
   {
-    icon: "💊",
-    title: "Medication Management",
-    description: "Track prescriptions, dosages, and refill schedules reliably.",
-    items: [
-      "Maintain an up-to-date medication list with dosages",
-      "Set up a daily/weekly pill organizer",
-      "Note medication interactions and side effects to watch",
-      "Track refill dates and pharmacy contact info",
-      "Log who administered medication and when",
-    ],
+    label: "02",
+    title: "Emergency Info",
+    text: "Key contacts, care preferences, allergies, and where important records are stored.",
   },
   {
-    icon: "🍽️",
-    title: "Nutrition & Hydration",
-    description: "Ensure consistent, appropriate meals and fluid intake.",
-    items: [
-      "Plan weekly meals accounting for dietary restrictions",
-      "Track daily fluid intake (goal: 6–8 glasses)",
-      "Monitor appetite changes or difficulty swallowing",
-      "Stock easy-to-prepare, nutrient-dense foods",
-      "Note food allergies and preferences",
-    ],
+    label: "03",
+    title: "Care Handoff Log",
+    text: "A repeatable page for what happened today, what changed, and what needs follow-up.",
   },
   {
-    icon: "🏃",
-    title: "Daily Routines & Mobility",
-    description: "Maintain independence and physical activity safely.",
-    items: [
-      "Morning hygiene checklist (bathing, grooming, dressing)",
-      "Daily mobility exercises or physical therapy log",
-      "Track use of mobility aids (walker, cane, wheelchair)",
-      "Record sleep patterns and quality",
-      "Monitor skin condition for pressure sores",
-    ],
+    label: "04",
+    title: "Appointments",
+    text: "Visit notes, questions to ask, follow-ups, and who is responsible next.",
   },
   {
-    icon: "🩺",
-    title: "Medical & Appointments",
-    description: "Stay on top of healthcare visits and health monitoring.",
-    items: [
-      "Upcoming doctor, specialist, and dental appointments",
-      "Blood pressure, glucose, and vitals log",
-      "List of current doctors and contact numbers",
-      "Insurance cards and Medicare/Medicaid info",
-      "Post-visit notes and follow-up instructions",
-    ],
+    label: "05",
+    title: "Task Tracker",
+    text: "A plain-language who-does-what page for family members and helpers.",
   },
   {
-    icon: "💬",
-    title: "Emotional & Social Wellbeing",
-    description: "Support mental health and meaningful connection.",
-    items: [
-      "Weekly social activities or family visits scheduled",
-      "Mood and cognitive changes log",
-      "Contact list for friends, neighbors, and community",
-      "Hobbies and engagement activities",
-      "Signs of depression or isolation to watch for",
-    ],
+    label: "06",
+    title: "Optional Sheet",
+    text: "A lightweight Google Sheet bonus only if it stays easy for buyers to copy and use.",
   },
 ];
 
-export const BENEFITS: { icon: string; title: string; text: string }[] = [
+export const HELP_POINTS: MarketingItem[] = [
   {
-    icon: "✅",
-    title: "Nothing Falls Through the Cracks",
-    text: "Every critical care task is documented so medications, appointments, and safety checks are never missed.",
+    title: "For family caregivers",
+    text: "Built for adult children and relatives coordinating care at home, especially when several people are helping.",
   },
   {
-    icon: "👨‍👩‍👧",
-    title: "Easy to Share with Family",
-    text: "Anyone stepping in to help — whether a sibling or a hired aide — can pick up exactly where you left off.",
+    title: "For collaborators",
+    text: "Short enough to review, practical enough to critique, and focused on what could become a clear Etsy digital product.",
   },
   {
-    icon: "🧘",
-    title: "Less Stress, More Confidence",
-    text: "Replace mental load with a clear system. Know what needs to happen today, this week, and this month.",
+    title: "For the first listing",
+    text: "PDF-first, low support, and intentionally not an app, subscription, or broad caregiving advice product.",
   },
 ];
 
-export const RESEARCH_NOTES: ResearchNote[] = [
+export const FEEDBACK_PROMPTS: string[] = [
+  "Which pages would a real caregiver use every week?",
+  "What would make the kit clearer for siblings, hired help, or facility staff?",
+  "What should stay out so the product remains simple and low support?",
+];
+
+export const DISCLAIMER =
+  "This is an organizer concept, not medical, legal, financial, or caregiving advice.";
+
+export const PRODUCT_DETAILS: MarketingItem[] = [
   {
-    label: "Target Audience",
-    content:
-      "Adult children (35–60) acting as primary caregivers for an aging parent at home. Often juggling work, their own family, and caregiving. May be long-distance.",
+    title: "Format",
+    text: "10-14 page printable PDF, with an optional simple Google Sheet bonus.",
   },
   {
-    label: "Core Pain Point",
-    content:
-      "Fear of missing something critical. Decision fatigue. Coordination friction when multiple people are involved in care.",
+    title: "Channel",
+    text: "Etsy-first so the first version can test buyer interest before any website, app, or broader product line.",
   },
   {
-    label: "Competing Products",
-    content:
-      "Generic caregiver apps (CareZone, CaringBridge), generic PDF checklists on care blogs. Gap: nothing that's printable + digital + organized by category.",
-  },
-  {
-    label: "Potential Formats",
-    content:
-      "PDF checklist bundle, Notion template, printable binder inserts. Consider a tiered product: free sample category + paid full bundle.",
-  },
-  {
-    label: "Pricing Research",
-    content:
-      "Similar digital products on Etsy: $5–$25. Notion templates: $10–$30. Could bundle with a 'caregiver's guide' doc for higher price point.",
-  },
-  {
-    label: "Content To Write",
-    content:
-      "Full checklist items for each category (draft above is ~5 items each, expand to 15–20). Add a 'Getting Started' guide. Add emergency info sheet template.",
+    title: "Next refinement",
+    text: "Use care-sector feedback to sharpen the page list, Etsy promise, and first listing images.",
   },
 ];
