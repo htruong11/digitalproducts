@@ -12,7 +12,7 @@ export function renderHero(
       ${renderProductPreview()}
       <div class="container">
         <div class="hero-copy">
-          <span class="eyebrow">Printable PDF for aging-parent care handoffs</span>
+          <span class="eyebrow">Printable PDF for aging-parent discharge week</span>
           <h1>${title}</h1>
           <p class="subtitle">${subtitle}</p>
           <div class="hero-points">${pointItems}</div>
@@ -28,29 +28,29 @@ export function renderHero(
 
 export function renderProductPreview(): string {
   return `
-    <div class="product-preview" aria-label="Preview of printable handoff kit pages">
+    <div class="product-preview" aria-label="Preview of printable hospital discharge kit pages">
       <div class="preview-page page-back">
-        <span>Emergency Snapshot</span>
+        <span>Follow-Up Tracker</span>
         <i></i><i></i><i></i><i></i>
       </div>
       <div class="preview-page page-mid">
-        <span>Daily Handoff Log</span>
+        <span>First 7 Days Home</span>
         <i></i><i></i><i></i><i></i>
       </div>
       <div class="preview-page page-front">
         <div class="sheet-top">
-          <span>Aging Parent Handoff Kit</span>
+          <span>Hospital-to-Home Discharge Kit</span>
           <b>PDF</b>
         </div>
-        <h2>Today's Care Notes</h2>
-        <p class="sheet-note">What changed? What is open? Who needs to know?</p>
+        <h2>Discharge Day Notes</h2>
+        <p class="sheet-note">What changed? What is due? Who needs to know?</p>
         <div class="sheet-row"><span></span><p></p></div>
         <div class="sheet-row"><span></span><p></p></div>
         <div class="sheet-row"><span></span><p></p></div>
         <div class="sheet-box"></div>
       </div>
-      <div class="preview-note note-top">Doctor visit questions</div>
-      <div class="preview-note note-bottom">Family task owner</div>
+      <div class="preview-note note-top">Care-team questions</div>
+      <div class="preview-note note-bottom">Pharmacy follow-up</div>
     </div>
   `;
 }
@@ -80,7 +80,7 @@ export function renderProblem(points: string[]): string {
     <section class="problem">
       <div class="container">
         <div class="section-kicker">The problem</div>
-        <h2>Aging-parent care coordination usually lives in someone's head.</h2>
+        <h2>Hospital discharge turns family care into a same-week operations problem.</h2>
         <ul class="problem-list">${items}</ul>
       </div>
     </section>
@@ -104,8 +104,8 @@ export function renderOffer(steps: MarketingItem[]): string {
     <section class="offer">
       <div class="container">
         <div class="section-kicker">Buyer moment</div>
-        <h2>Built for the moment someone else needs to step in.</h2>
-        <p class="section-subtitle">The product is not a full care guide. It is a small operating packet for the recurring handoff moments families actually face.</p>
+        <h2>Built for the first week after discharge.</h2>
+        <p class="section-subtitle">The product is not a medical guide. It is a small operating packet for the tasks families have to coordinate immediately.</p>
         <div class="offer-grid">${items}</div>
       </div>
     </section>
@@ -128,8 +128,8 @@ export function renderInside(pages: KitPage[]): string {
     <section class="inside" id="inside">
       <div class="container">
         <div class="section-kicker">What's inside</div>
-        <h2>A practical handoff kit families can print and use the same day.</h2>
-        <p class="section-subtitle">The first product stays intentionally small: emergency snapshot, daily handoff, doctor visit prep, and family task ownership.</p>
+        <h2>A practical discharge kit families can print and use the same day.</h2>
+        <p class="section-subtitle">The first product stays intentionally small: discharge notes, medication changes, follow-ups, home readiness, and family task ownership.</p>
         <div class="kit-grid">${cards}</div>
       </div>
     </section>
@@ -175,8 +175,8 @@ export function renderMarket(points: MarketingItem[]): string {
     <section class="market">
       <div class="container">
         <div class="section-kicker">Market research</div>
-        <h2>The research supports a narrow handoff product, not a generic planner.</h2>
-        <p class="section-subtitle">The category has visible demand, but the first product must avoid looking like another low-price printable binder.</p>
+        <h2>The research supports a narrow discharge-week product, not a generic planner.</h2>
+        <p class="section-subtitle">The category has visible demand, but the first product must avoid looking like another low-price printable checklist.</p>
         <div class="market-grid">${cards}</div>
       </div>
     </section>

@@ -20,120 +20,127 @@ export interface CompetitorItem {
   weakness: string;
 }
 
-export const PRODUCT_TITLE = "Aging Parent Handoff Kit";
+export const PRODUCT_TITLE = "Hospital-to-Home Discharge Kit";
 export const PRODUCT_SUBTITLE =
-  "A printable coordination kit that helps family members, aides, and doctors quickly understand what changed, what matters, and who is handling what.";
+  "A printable transition kit for adult children bringing an aging parent home from the hospital, rehab, or urgent care.";
 
 export const HERO_POINTS: string[] = [
   "Printable PDF",
   "No app or login",
-  "Designed for family handoffs",
+  "Built for discharge week",
 ];
 
 export const PROBLEM_POINTS: string[] = [
-  "One family member becomes the default memory for medications, appointments, tasks, and daily changes.",
-  "Care handoffs happen through rushed texts, phone calls, sticky notes, or whatever someone remembers.",
-  "Doctor visits and emergency moments require a clean snapshot, but the details are scattered.",
+  "Families often get discharge instructions while tired, rushed, and unsure what has to happen first at home.",
+  "Medication changes, follow-up appointments, equipment, home setup, and family tasks scatter across papers and texts.",
+  "The first week home needs a simple operating packet, not a broad caregiving binder.",
 ];
 
 export const KIT_PAGES: KitPage[] = [
   {
     label: "01",
-    title: "Start Here",
-    text: "A five-minute setup page that tells families which pages to fill out first.",
+    title: "Discharge Day Snapshot",
+    text: "A first-page summary for diagnosis, discharge date, pharmacy, follow-up contacts, and key instructions.",
   },
   {
     label: "02",
-    title: "Emergency Snapshot",
-    text: "Key contacts, allergies, medication basics, care preferences, and where important records are stored.",
+    title: "Medication Change Log",
+    text: "A simple place to record what stopped, started, changed, and what still needs pharmacy follow-up.",
   },
   {
     label: "03",
-    title: "Daily Handoff Log",
-    text: "A repeatable page for what happened today, what changed, and what needs follow-up.",
+    title: "First 7 Days Home",
+    text: "Daily notes for symptoms to mention, open questions, meals, mobility, equipment, and family updates.",
   },
   {
     label: "04",
-    title: "Doctor Visit Prep",
-    text: "Questions to ask, recent changes to mention, appointment notes, and follow-up actions.",
+    title: "Follow-Up Tracker",
+    text: "Appointments, referrals, labs, therapy, transportation, and tasks that need a named owner.",
   },
   {
     label: "05",
-    title: "Family Task Ownership",
-    text: "A plain-language who-does-what page for siblings, relatives, and helpers.",
+    title: "Home Readiness Checklist",
+    text: "Room setup, meals, supplies, mobility aids, documents, and phone numbers to gather before the first night.",
   },
   {
     label: "06",
-    title: "Weekly Care Summary",
-    text: "A one-page review of what changed this week, what is open, and what needs a decision.",
+    title: "Questions For The Care Team",
+    text: "A neutral prompt sheet for recording what the hospital, rehab team, pharmacist, or doctor actually said.",
   },
 ];
 
 export const OFFER_STEPS: MarketingItem[] = [
   {
-    title: "Fill the emergency snapshot first",
-    text: "Start with contacts, medications, allergies, care preferences, and where important documents live.",
+    title: "Capture the discharge instructions",
+    text: "Put the discharge date, care team, pharmacy, follow-up plan, and unresolved questions in one place.",
   },
   {
-    title: "Use the handoff log daily",
-    text: "Capture what changed, what was done, what is still open, and what the next helper needs to know.",
+    title: "Work the first week home",
+    text: "Use one page per day to record changes, family updates, tasks, and anything to ask at follow-up.",
   },
   {
-    title: "Bring a cleaner doctor visit brief",
-    text: "Use the visit prep and notes pages to keep questions, recent changes, and follow-up tasks together.",
+    title: "Hand off without re-explaining",
+    text: "Give siblings, aides, or the next appointment a clean view of what changed and what still needs action.",
   },
 ];
 
 export const HELP_POINTS: MarketingItem[] = [
   {
     title: "For adult children",
-    text: "Built for families coordinating care for an aging parent, especially when one person keeps becoming the update hub.",
+    text: "Built for families suddenly coordinating post-hospital care for an aging parent.",
   },
   {
-    title: "For family handoffs",
-    text: "Focused on daily changes, open loops, and the information another helper needs before stepping in.",
+    title: "For discharge week",
+    text: "Focused on the first days home, medication changes, follow-ups, home setup, and family task ownership.",
   },
   {
     title: "For the first listing",
-    text: "PDF-first, low support, and intentionally not an app, subscription, or broad caregiving advice product.",
+    text: "PDF-first, low support, and intentionally not an app, clinical guide, or broad caregiving advice product.",
   },
 ];
 
 export const STATS: StatItem[] = [
   {
-    value: "5,000+",
-    label: "Caregiver planner items visible on Etsy market pages",
-  },
-  {
-    value: "4,000+",
-    label: "Medical binder items competing for broad buyer intent",
-  },
-  {
-    value: "5.8k",
-    label: "Sales shown by direct competitor CompetentCaregiver",
+    value: "390+",
+    label: "Hospital discharge items visible on Etsy market pages",
   },
   {
     value: "$9.99",
-    label: "Recommended intro price before raising the anchor",
+    label: "Recommended intro price for the first discharge listing",
+  },
+  {
+    value: "$14.99",
+    label: "Target anchor after the listing earns real buyer signal",
+  },
+  {
+    value: "30 days",
+    label: "Executor kit queued as the next higher-ticket product",
   },
 ];
 
 export const MARKET_POINTS: MarketingItem[] = [
   {
-    title: "Validated demand",
-    text: "Etsy has thousands of caregiver planner, caregiving log, elder care planner, and medical binder listings with visible review activity.",
+    title: "Validated urgent moment",
+    text: "Etsy has a live hospital-discharge market page with aging-parent discharge checklists and related care-transition downloads.",
   },
   {
-    title: "Crowded generic terms",
-    text: "Generic caregiver planners often sell as low-priced printables, so the first listing should avoid sounding like another broad binder.",
+    title: "Cleaner than generic caregiving",
+    text: "Discharge language is narrower than caregiver planner or medical binder, while still matching the same adult-child buyer.",
   },
   {
-    title: "Sharper wedge",
-    text: "Aging-parent handoff, emergency readiness, doctor visit prep, and family task ownership are more specific buyer problems to test first.",
+    title: "Natural product ladder",
+    text: "A discharge kit can cross-link into the broader handoff kit, then into a higher-ticket executor first-30-days kit.",
   },
 ];
 
 export const COMPETITORS: CompetitorItem[] = [
+  {
+    cluster: "Hospital discharge checklists",
+    evidence:
+      "Etsy market page shows 390+ items, including aging-parent and caregiver discharge PDFs.",
+    weakness:
+      "Many are thin checklists; a sequenced first-week kit can look more useful.",
+  },
   {
     cluster: "Generic caregiver planners",
     evidence: "Large Etsy result set, many $1-$8 printable PDFs.",
@@ -141,29 +148,23 @@ export const COMPETITORS: CompetitorItem[] = [
   },
   {
     cluster: "Medical binders",
-    evidence: "Large review signals and 4,000+ visible market items.",
+    evidence: "Large review signals and thousands of visible market items.",
     weakness:
-      "Too broad for a new shop; competes with chronic illness and emergency binders.",
+      "Too broad for a new shop and not specific to the discharge-week job.",
   },
   {
-    cluster: "Caregiving daily logs",
+    cluster: "Executor and end-of-life binders",
     evidence:
-      "Clear demand for task sheets, visit logs, and home-care reports.",
+      "Higher willingness-to-pay, including $15-$30 estate and emergency organizers.",
     weakness:
-      "Single-page logs are highly commoditized and hard to price above impulse-buy range.",
-  },
-  {
-    cluster: "Connected Notion systems",
-    evidence:
-      "Premium templates around $20-$30 validate the bigger system ladder.",
-    weakness: "More setup friction for stressed, nontechnical caregivers.",
+      "Legal-adjacent claims risk is higher, so it should follow after the first caregiver-cluster listing.",
   },
 ];
 
 export const VALIDATION_PLAN: MarketingItem[] = [
   {
     title: "First 100 qualified visits",
-    text: "If there are no sales, revise title, thumbnail, first image, and price before building another product.",
+    text: "If there are no sales, revise the discharge-specific title, thumbnail, first image, and price before building another product.",
   },
   {
     title: "Favorites without purchases",
@@ -171,7 +172,7 @@ export const VALIDATION_PLAN: MarketingItem[] = [
   },
   {
     title: "Buyer questions",
-    text: "Use repeated questions to decide whether the next product should be a sheet, Notion system, or narrower printable.",
+    text: "Use repeated questions to decide whether to add fillable fields, a Google Sheet, or a more specific rehab/surgery version.",
   },
 ];
 
@@ -182,18 +183,18 @@ export const RISK_POINTS: MarketingItem[] = [
   },
   {
     title: "Price compression",
-    text: "Many competing PDFs are cheap. The page and listing must prove why a more complete handoff kit is worth more.",
+    text: "Many competing PDFs are cheap. The page and listing must prove why a sequenced discharge-week kit is worth more.",
   },
   {
-    title: "Behavior change",
-    text: "The buyer still needs family members or helpers to use the pages. Simplicity is part of the product.",
+    title: "Medical claims",
+    text: "The kit must record care-team instructions, not provide clinical guidance or promises about outcomes.",
   },
 ];
 
 export const FEEDBACK_PROMPTS: string[] = [
-  "Would this help a sibling, aide, or spouse step in without a long explanation?",
-  "Which page would be most useful before a doctor visit or emergency call?",
-  "What should stay out so the kit remains simple, printable, and low support?",
+  "Would this help during the first week after discharge?",
+  "Which page would you want before leaving the hospital or rehab facility?",
+  "What should stay out so the kit remains an organizer, not medical advice?",
 ];
 
 export const DISCLAIMER =
@@ -202,7 +203,7 @@ export const DISCLAIMER =
 export const PRODUCT_DETAILS: MarketingItem[] = [
   {
     title: "Format",
-    text: "10-14 page printable PDF with US Letter and A4 layouts. A connected sheet or Notion version comes later only if buyers ask for it.",
+    text: "10-14 page printable PDF with US Letter and A4 layouts. A fillable or Google Sheets version comes later only if buyers ask for it.",
   },
   {
     title: "Channel",
@@ -210,6 +211,6 @@ export const PRODUCT_DETAILS: MarketingItem[] = [
   },
   {
     title: "Market position",
-    text: "More specific than a generic caregiver planner: the wedge is aging-parent handoff, emergency readiness, and family coordination.",
+    text: "More specific than a generic caregiver planner: the wedge is hospital-to-home transition, first-week coordination, and family task ownership.",
   },
 ];
