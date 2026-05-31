@@ -3,7 +3,7 @@ owner: bestrobot
 tracking: IMP-006
 status: proposal
 created: 2026-05-31
-source: IMP-001, IMP-004, IMP-005 + live marketplace research and Claude Code critique on 2026-05-31
+source: IMP-001, IMP-004, IMP-005 + live marketplace research, Etsy policy review, and Claude Code critique on 2026-05-31
 ---
 
 # IMP-006: Adjacent Product Research For More Sellable Digital Products
@@ -179,19 +179,117 @@ customization, and state-specific liability.
 6. Stop after 100 qualified views or 10 sales and inspect conversion, favorites,
    messages, and search terms before building the executor kit.
 
+## Etsy AI & Claims Policy Findings
+
+Research update: 2026-05-31.
+
+1. **AI-assisted digital products are allowed on Etsy if they are original and
+   disclosed.** Etsy's Creativity Standards allow sellers' original digital
+   downloads and seller-prompted AI creations, but Etsy requires sellers to
+   disclose AI use in the listing description.
+
+2. **AI prompt bundles are not allowed.** This business should sell finished
+   organizer products only, not prompts, prompt packs, or raw AI output with no
+   seller design layer.
+
+3. **Originality is mandatory.** Do not copy hospital discharge forms,
+   government forms, attorney templates, insurer forms, competitor PDFs,
+   screenshots, logos, or listing images. The product must be a seller-designed
+   original organizer.
+
+4. **Listing images must truthfully show the actual product.** For a digital PDF,
+   use screenshots or mockups built from the finished pages buyers receive. Do
+   not use competitor images, generic stock files that imply a different
+   product, or misleading preview pages.
+
+5. **Medical claims are the main Etsy risk.** Etsy treats both disease claims
+   and structure/function claims as medical claims. Claims can appear in the
+   title, description, tags, listing images, or product presentation. Etsy says
+   disclaimers do not fix prohibited medical claims.
+
+6. **Etsy does not pre-approve claims.** The seller is responsible for complying
+   with Etsy policy and applicable law. Etsy can remove listings or limit account
+   access if listings violate policy.
+
+7. **FTC substantiation risk exists if we make health benefit claims.** The
+   safest path is to make zero health-benefit claims and position these products
+   as recordkeeping templates only.
+
+## Review Gate Before Listing
+
+Etsy does **not** require a formal clinician or legal review for these digital
+organizers, and Etsy does not provide claim pre-approval. Internally, however,
+every medical- or legal-adjacent product must pass this pre-listing gate.
+
+Required internal review:
+
+1. **AI disclosure check.** If AI assisted the copy, layout, page structure,
+   mockups, or description, add one clear sentence in the listing description:
+   `This original organizer was created by the seller with assistance from AI
+tools and edited/reviewed by the seller.`
+2. **Function check.** The product must help buyers record, organize, and prepare
+   questions. It must not tell them what to do medically, legally, financially,
+   or clinically.
+3. **Title / tag / image scrub.** Remove any explicit or implied medical,
+   legal, tax, insurance, or compliance claim from the title, tags, first image,
+   preview images, listing description, and PDF pages.
+4. **Originality check.** Confirm every page is our own design and no source
+   form, hospital document, attorney form, or competitor template was copied.
+5. **Disclaimer check.** Include expectation-setting language, while remembering
+   that disclaimers do not cure prohibited claims:
+   `This is a general organization template, not medical, legal, financial, tax,
+insurance, or caregiving advice. Follow the instructions from your care team,
+attorney, insurer, or qualified professional.`
+6. **Support boundary check.** Buyer messages that ask medical, legal, insurance,
+   or probate questions get a short boundary reply and a pointer to their
+   relevant professional, not custom advice.
+
+External review recommendation:
+
+- **Hospital-to-Home Discharge Kit and Aging Parent Handoff Kit:** clinician
+  review is strongly recommended if any page includes authored medical guidance,
+  warning signs, condition-specific instructions, dosage language, or "when to
+  call" content. If the kit only records the buyer's care-team instructions,
+  clinician review is recommended but not required before the first Etsy test.
+- **Executor First 30 Days Estate Admin Kit:** attorney or qualified legal
+  professional review is recommended before launch because state-specific probate
+  and unauthorized-practice-of-law risk is higher than the medical organizer
+  risk. Do not launch it as a legal guide.
+
+Red-flag language to avoid:
+
+- Medical: `treat`, `cure`, `heal`, `diagnose`, `prevention`, `reduce risk`,
+  `warning signs`, `red flags`, `recovery protocol`, `clinically proven`,
+  `doctor recommended`, `medically approved`, `dosage`, `when to call 911`,
+  `complication guide`, `heals faster`, or condition-specific promises.
+- Legal / estate: `legal advice`, `attorney-grade`, `legally binding`,
+  `guarantees compliance`, `probate guide`, `how to probate`, `tax advice`,
+  `avoid probate`, `court-approved`, or `everything you need to settle an
+estate`.
+- Safe framing: `organizer`, `checklist`, `tracker`, `log`, `template`,
+  `planner`, `record`, `worksheet`, `for recording your care team's
+instructions`, and `to keep documents in one place`.
+
 ## Claude Code Feedback
 
-Claude Code was asked to critique the shortlist with no file changes. Command
-used:
+Claude Code was asked twice to critique this IMP with no file changes.
+
+Market critique command:
 
 ```bash
 /Users/bestrobot/setup-mac/.agents/skills/claudecode/scripts/run-claudecode.sh plan "<market research critique prompt>"
 ```
 
-Permission mode: `plan`. Tool restrictions: prompt instructed Claude not to edit
-files. Files changed by Claude: none.
+Policy critique command:
 
-Claude's key feedback:
+```bash
+/Users/bestrobot/setup-mac/.agents/skills/claudecode/scripts/run-claudecode.sh plan "<Etsy policy risk review prompt>"
+```
+
+Permission mode for both runs: `plan`. Tool restrictions: prompts instructed
+Claude not to edit files. Files changed by Claude: none.
+
+Claude's key market feedback:
 
 - Executor first-30-days estate admin kit is the strongest willingness-to-pay
   opportunity.
@@ -204,23 +302,56 @@ Claude's key feedback:
 - Small assisted living operator forms should be rejected for now because they
   are compliance-heavy B2B tooling, not low-support digital products.
 
+Claude's key policy feedback:
+
+- AI-assisted PDFs/templates are allowed if original and disclosed in the listing
+  description.
+- The decisive risk is not AI; it is medical/legal claims in title, tags,
+  description, images, or PDF pages.
+- Disclaimers manage expectations but do not cure prohibited claims.
+- Clinician review is recommended for medical kits if they contain authored
+  guidance; legal review is recommended before launching the executor kit.
+
 ## Tasks
 
 1. [x] Research adjacent Etsy, Gumroad, Notion, Google, and Reddit signals.
 2. [x] Score 20 low-support digital product ideas.
 3. [x] Get Claude Code critique.
 4. [x] Update the internal site direction to the discharge kit.
-5. [ ] Build the 10-14 page Hospital-to-Home Discharge Kit PDF.
-6. [ ] Draft the Etsy listing title, tags, description, FAQ, and 6-8 listing
+5. [x] Review Etsy AI, creativity, seller, image, IP, prohibited-item, and
+       medical-claims policies.
+6. [x] Add a pre-listing AI disclosure and claims-review gate.
+7. [ ] Build the 10-14 page Hospital-to-Home Discharge Kit PDF.
+8. [ ] Draft the Etsy listing title, tags, description, FAQ, and 6-8 listing
        images from the real pages.
-7. [ ] Reassess after 100 qualified views or 10 sales.
-8. [ ] If the discharge kit gets signal, build the Executor First 30 Days Estate
-       Admin Kit as the higher-ticket next product.
+9. [ ] Reassess after 100 qualified views or 10 sales.
+10. [ ] If the discharge kit gets signal, build the Executor First 30 Days Estate
+        Admin Kit as the higher-ticket next product.
 
 ## References & Research
 
 Research run date: 2026-05-31.
 
+- Etsy Creativity Standards:
+  https://www.etsy.com/legal/creativity/
+- Etsy AI creations stance:
+  https://www.etsy.com/seller-handbook/article/1275449912004
+- Etsy Seller Policy:
+  https://www.etsy.com/legal/sellers/
+- Etsy Listing Image Requirements:
+  https://www.etsy.com/legal/policy/listing-image-requirements/253962679005
+- Etsy Medical Claims:
+  https://www.etsy.com/legal/policy/medical-claims/239976157654
+- Etsy Prohibited Items Policy:
+  https://www.etsy.com/legal/prohibited/
+- Etsy Intellectual Property Policy:
+  https://www.etsy.com/legal/ip/
+- FTC Health Claims:
+  https://www.ftc.gov/business-guidance/advertising-marketing/health-claims
+- FTC Health Products Compliance Guidance:
+  https://www.ftc.gov/business-guidance/resources/health-products-compliance-guidance
+- FDA medical device determination:
+  https://www.fda.gov/medical-devices/classify-your-medical-device/how-determine-if-your-product-medical-device
 - Etsy hospital discharge market:
   https://www.etsy.com/market/hospital_discharge
 - Etsy digital end-of-life planner market:
