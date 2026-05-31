@@ -297,7 +297,7 @@ export function renderFooter(): string {
   return `
     <footer class="footer">
       <div class="container">
-        <p>Aging Parent Handoff Kit · ${new Date().getFullYear()}</p>
+        <p>Hospital-to-Home Discharge Kit · ${new Date().getFullYear()}</p>
         <p class="footer-updated">Last updated: 2026-05-31 · Organizer only, not medical, legal, financial, or caregiving advice.</p>
       </div>
     </footer>

@@ -103,6 +103,29 @@ describe("validateDraftListing", () => {
     expect(result.issues.map((i) => i.code)).toContain("risky_claim");
   });
 
+  it("blocks medical triage and recovery language", () => {
+    const input = validInput({
+      title:
+        "Hospital Discharge Recovery Protocol With Warning Signs Checklist",
+      description: "Know when to call 911 after discharge. Not medical advice.",
+    });
+    const result = validateDraftListing(input);
+    expect(result.valid).toBe(false);
+    expect(result.issues.map((i) => i.code)).toContain("risky_claim");
+  });
+
+  it("blocks legal, probate, tax, and compliance claims", () => {
+    const input = validInput({
+      title: "Executor Probate Guide For Settling The Estate",
+      description:
+        "Attorney-grade checklist with tax advice and state-compliant steps. " +
+        "Not legal advice.",
+    });
+    const result = validateDraftListing(input);
+    expect(result.valid).toBe(false);
+    expect(result.issues.map((i) => i.code)).toContain("risky_claim");
+  });
+
   it("warns (does not hard-fail) on a missing image", () => {
     const result = validateDraftListing(validInput({ hasImage: false }));
     const issue = result.issues.find((i) => i.code === "image_missing");

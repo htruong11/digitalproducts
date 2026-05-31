@@ -1,6 +1,16 @@
-# Family Caregiver Command Kit
+# Hospital-to-Home Discharge Kit
 
-Product workspace for the caregiver MVP described in `docs/imps/IMP-001-init-product.md`.
+Product workspace for the caregiver MVP now narrowed by
+`docs/imps/IMP-006-adjacent-product-research.md`.
+
+Publish status:
+
+- **Hospital-to-Home Discharge Kit:** ready to build and publish after the
+  standard claims scrub.
+- **Aging Parent Handoff Kit:** ready as the companion product after scrub.
+- **Executor First 30 Days Estate Admin Kit:** do not build here; needs legal
+  de-risking first.
+- **Small assisted-living operator forms:** blocked for now.
 
 - `content/` - source copy for the PDF kit.
 - `print/` - print/PDF templates and styling.

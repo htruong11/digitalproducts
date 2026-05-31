@@ -92,7 +92,7 @@ Use system fonts only:
 
 ## 7. Do's and Don'ts
 
-- Do lead with "Aging Parent Handoff Kit."
+- Do lead with "Hospital-to-Home Discharge Kit."
 - Do show the concrete buyer moment: emergency info, daily handoff, doctor visit
   prep, and family task ownership.
 - Do include why the product could fail: crowded keywords, low-price comps, and
@@ -114,7 +114,7 @@ Use system fonts only:
 
 ## 9. Agent Prompt Guide
 
-Build a polished static product page for a printable "Aging Parent Handoff Kit."
+Build a polished static product page for a printable "Hospital-to-Home Discharge Kit."
 Use a midnight hero with a full-bleed paper-workspace visual, white/light green
 sections, teal/coral/gold accents, 8px cards, readable system typography, and
 specific market-proof sections. The page should feel like a practical product

@@ -1,13 +1,20 @@
 ---
 owner: bestrobot
 tracking: IMP-001
-status: draft
+status: superseded-by-IMP-006-for-publication
 created: 2026-05-30
 source: ../scratchpad/claudesession.md
 note: canonical merge of the two previous IMP-001 drafts; duplicate draft removed
 ---
 
 # IMP-001: Lean Caregiver Digital Product MVP
+
+## Publication Safety Note
+
+IMP-006 supersedes this document for the first publishable product. Treat
+"Family Caregiver Command Kit" as historical working language. The current
+publication path is the Hospital-to-Home Discharge Kit, framed only as an
+organizer that records care-team instructions and family tasks.
 
 ## Abstract
 

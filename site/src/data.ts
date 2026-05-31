@@ -40,7 +40,7 @@ export const KIT_PAGES: KitPage[] = [
   {
     label: "01",
     title: "Discharge Day Snapshot",
-    text: "A first-page summary for diagnosis, discharge date, pharmacy, follow-up contacts, and key instructions.",
+    text: "A first-page summary for the discharge reason as written by the care team, discharge date, pharmacy, follow-up contacts, and key instructions.",
   },
   {
     label: "02",

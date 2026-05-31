@@ -1,12 +1,19 @@
 ---
 owner: bestrobot
 tracking: IMP-005
-status: proposal
+status: superseded-by-IMP-006-for-publication
 created: 2026-05-31
 source: IMP-001, IMP-002, IMP-004 + live market research on 2026-05-31
 ---
 
 # IMP-005: Caregiver Digital Product Market Research & Direction
+
+## Publication Safety Note
+
+IMP-006 supersedes this document for launch sequencing and compliance posture.
+The Aging Parent Handoff Kit remains publishable after a claims scrub, but it is
+now the companion product. The first product to build and publish is the
+Hospital-to-Home Discharge Kit.
 
 ## Abstract
 

@@ -149,6 +149,49 @@ Why it could fail:
 - Insurers and government agencies provide free inventory templates, so the paid
   product must be faster and more usable.
 
+## Publish / De-Risk Decision Matrix
+
+Use this as the repo's product gate before building or publishing listings.
+`Publish-ready` means the idea can move to PDF/listing production after the
+standard claims scrub. It does not mean zero legal or platform risk.
+
+| Product idea                                  | Current action                         | Risk posture   | Required boundary before publishing                                                                                                                                                                                                                                                                                                               |
+| --------------------------------------------- | -------------------------------------- | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Hospital-to-Home Discharge Kit                | **Publish-ready after scrub**          | Low-to-medium  | Organizer only. Records care-team instructions, medication changes, follow-up tasks, contacts, and family ownership. No warning signs, dosage guidance, treatment steps, recovery promises, diagnosis guidance, or "when to call" content authored by us.                                                                                         |
+| Aging Parent Handoff Kit                      | **Publish-ready after scrub**          | Low-to-medium  | Communication and recordkeeping only. Keep it as emergency snapshot, handoff log, appointment notes, family task tracker, contacts, and document inventory. No caregiving advice, clinical claims, HIPAA promise, or outcome claims.                                                                                                              |
+| Executor First 30 Days Estate Admin Kit       | **Needs de-risking before launch**     | Medium-to-high | Administrative tracker only: contacts, death certificate count, document inventory, bills/accounts log, calls made, attorney notes, and family updates. No probate instructions, tax guidance, asset-transfer advice, legal interpretations, deadlines, or "settle the estate" promise. Get attorney/paralegal review before selling if possible. |
+| Home Insurance Claim & Inventory Sprint Kit   | **Possible later / separate vertical** | Low-to-medium  | Inventory and communication tracker only. No insurance coverage advice, claim valuation advice, payout promises, policy interpretation, public-adjuster positioning, or disaster-recovery claims. Better as a separate shop/vertical after caregiver cluster signal.                                                                              |
+| Assisted Living Move-In First 30 Days Kit     | **Fold into caregiver line later**     | Medium         | Consumer move-in organizer only: packing list, room setup, contacts, questions to ask facility, family tasks. No facility-selection advice, care-level guidance, resident-rights interpretations, contract guidance, or state-specific claims.                                                                                                    |
+| Nursing Home / Assisted Living Comparison Kit | **Needs more thought**                 | Medium         | Comparison worksheet only. Avoid ranking facilities, advising care levels, interpreting contracts, or implying regulatory completeness. Use neutral "questions to ask" language.                                                                                                                                                                  |
+| Medical Bill, HSA, FSA & Insurance Tracker    | **Needs de-risking**                   | Medium         | Expense and call log only. No reimbursement, deductible, tax, HSA/FSA eligibility, coding, appeal, or coverage advice.                                                                                                                                                                                                                            |
+| Medication Refill Command Sheet               | **Needs de-risking**                   | Medium         | Refill tracker only. No dosage, adherence, interaction, side-effect, prescribing, medication-change, or urgency advice.                                                                                                                                                                                                                           |
+| Dementia Behavior & Sundowning Tracker        | **Needs de-risking**                   | Medium-to-high | Observation log only. No symptom interpretation, behavior-management plan, diagnosis language, safety claims, or treatment recommendations. Consider clinician review before listing.                                                                                                                                                             |
+| Funeral Arrangement Admin Kit                 | **Possible later**                     | Medium         | Event/admin planner only: contacts, guest list, budget, obituary notes, vendor calls. No legal, religious, or estate guidance.                                                                                                                                                                                                                    |
+| Senior Downsizing Room-by-Room Kit            | **Low-risk later**                     | Low            | Organization workflow only. Avoid appraisal, tax-deduction, elder-law, hoarding-treatment, or estate-sale advice.                                                                                                                                                                                                                                 |
+| Estate Sale Inventory & Proceeds Tracker      | **Low-risk later**                     | Low-to-medium  | Inventory/proceeds tracker only. No appraisal, tax, legal ownership, auction, or estate-distribution advice.                                                                                                                                                                                                                                      |
+| Hospice Home Handoff Kit                      | **Avoid for now**                      | High           | Too emotionally and medically sensitive for a first shop. Only revisit with clinician/hospice review and strict "record professional instructions" framing.                                                                                                                                                                                       |
+| Doctor Visit Prep & Follow-Up Packet          | **Possible bundle page**               | Medium         | Question/notes worksheet only. No symptom triage, differential diagnosis, treatment recommendations, or urgency guidance.                                                                                                                                                                                                                         |
+| Sibling Care Cost-Share Ledger                | **Needs more thought**                 | Medium         | Shared expense tracker only. No legal enforceability, reimbursement entitlement, tax treatment, or family-mediation advice.                                                                                                                                                                                                                       |
+| Caregiver Timesheet & Reimbursement Packet    | **Needs de-risking**                   | Medium         | Hours/tasks/mileage log only. No employment classification, payroll, overtime, tax, Medicaid, or reimbursement advice.                                                                                                                                                                                                                            |
+| Home Maintenance Emergency Binder             | **Low-risk later**                     | Low            | Contacts, warranties, shutoffs, and service records. Avoid safety-code, electrical/plumbing, insurance, or contractor-selection advice.                                                                                                                                                                                                           |
+| Digital Legacy Account Inventory              | **Needs de-risking**                   | Medium         | Account inventory and location notes only. No password-sharing instructions, legal access guidance, estate-transfer advice, security guarantees, or "avoid probate" language.                                                                                                                                                                     |
+| Disaster Go-Bag Household Admin Kit           | **Low-risk later**                     | Low-to-medium  | Household checklist and records only. No survival, medical, evacuation, safety, or emergency-response guarantees.                                                                                                                                                                                                                                 |
+| Small Assisted Living Shift Report Forms      | **Do not build now**                   | High           | Compliance-heavy B2B forms invite state-specific rules, support, and liability. Revisit only with operator/legal review and a separate compliance process.                                                                                                                                                                                        |
+| Solo Business Annual Admin Tracker            | **Possible later / off-niche**         | Medium         | Renewal and document tracker only. No tax, licensing, insurance, legal, or compliance advice.                                                                                                                                                                                                                                                     |
+
+Immediate publish queue:
+
+1. **Hospital-to-Home Discharge Kit** - proceed to build and draft listing after
+   the claims scrub.
+2. **Aging Parent Handoff Kit** - proceed as the companion/bundle product after
+   or alongside the discharge kit if bandwidth allows.
+
+Explicitly blocked for now:
+
+- Small assisted-living operator forms.
+- Hospice home handoff kit.
+- Executor kit as a legal/probate guide.
+
 ## Decision
 
 Pivot the immediate product surface from **Aging Parent Handoff Kit** to
@@ -225,8 +268,11 @@ Required internal review:
 
 1. **AI disclosure check.** If AI assisted the copy, layout, page structure,
    mockups, or description, add one clear sentence in the listing description:
-   `This original organizer was created by the seller with assistance from AI
-tools and edited/reviewed by the seller.`
+
+   ```text
+   This original organizer was created by the seller with assistance from AI tools and edited/reviewed by the seller.
+   ```
+
 2. **Function check.** The product must help buyers record, organize, and prepare
    questions. It must not tell them what to do medically, legally, financially,
    or clinically.
@@ -237,12 +283,18 @@ tools and edited/reviewed by the seller.`
    form, hospital document, attorney form, or competitor template was copied.
 5. **Disclaimer check.** Include expectation-setting language, while remembering
    that disclaimers do not cure prohibited claims:
-   `This is a general organization template, not medical, legal, financial, tax,
-insurance, or caregiving advice. Follow the instructions from your care team,
-attorney, insurer, or qualified professional.`
+
+   ```text
+   This is a general organization template, not medical, legal, financial, tax, insurance, or caregiving advice. Follow the instructions from your care team, attorney, insurer, or qualified professional.
+   ```
+
 6. **Support boundary check.** Buyer messages that ask medical, legal, insurance,
    or probate questions get a short boundary reply and a pointer to their
    relevant professional, not custom advice.
+7. **Publish status check.** The product must be marked
+   `Publish-ready after scrub` in the matrix above. Anything marked
+   `Needs de-risking`, `Possible later`, or `Avoid/Do not build now` requires a
+   fresh review before assets or Etsy copy are produced.
 
 External review recommendation:
 
@@ -321,11 +373,12 @@ Claude's key policy feedback:
 5. [x] Review Etsy AI, creativity, seller, image, IP, prohibited-item, and
        medical-claims policies.
 6. [x] Add a pre-listing AI disclosure and claims-review gate.
-7. [ ] Build the 10-14 page Hospital-to-Home Discharge Kit PDF.
-8. [ ] Draft the Etsy listing title, tags, description, FAQ, and 6-8 listing
+7. [x] Add publish / de-risk matrix for every researched product idea.
+8. [ ] Build the 10-14 page Hospital-to-Home Discharge Kit PDF.
+9. [ ] Draft the Etsy listing title, tags, description, FAQ, and 6-8 listing
        images from the real pages.
-9. [ ] Reassess after 100 qualified views or 10 sales.
-10. [ ] If the discharge kit gets signal, build the Executor First 30 Days Estate
+10. [ ] Reassess after 100 qualified views or 10 sales.
+11. [ ] If the discharge kit gets signal, build the Executor First 30 Days Estate
         Admin Kit as the higher-ticket next product.
 
 ## References & Research
