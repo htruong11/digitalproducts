@@ -5,6 +5,7 @@ import {
   PROBLEM_POINTS,
   KIT_PAGES,
   HELP_POINTS,
+  MARKET_POINTS,
   FEEDBACK_PROMPTS,
   DISCLAIMER,
   PRODUCT_DETAILS,
@@ -14,6 +15,7 @@ import {
   renderProblem,
   renderInside,
   renderHelp,
+  renderMarket,
   renderCollaborate,
   renderFooter,
 } from "./components";
@@ -29,6 +31,7 @@ app.innerHTML = [
   renderProblem(PROBLEM_POINTS),
   renderInside(KIT_PAGES),
   renderHelp(HELP_POINTS),
+  renderMarket(MARKET_POINTS),
   renderCollaborate(PRODUCT_DETAILS, FEEDBACK_PROMPTS, DISCLAIMER),
   renderFooter(),
 ].join("");

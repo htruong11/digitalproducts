@@ -9,57 +9,57 @@ export interface KitPage {
   text: string;
 }
 
-export const PRODUCT_TITLE = "Family Caregiver Command Kit";
+export const PRODUCT_TITLE = "Aging Parent Handoff Kit";
 export const PRODUCT_SUBTITLE =
-  "A simple printable kit to keep appointments, tasks, handoffs, and emergency details in one place while your family coordinates care for an aging parent.";
+  "A printable coordination kit that helps family members, aides, and doctors quickly understand what changed, what matters, and who is handling what.";
 
 export const PROBLEM_POINTS: string[] = [
-  "One person is carrying the mental list, and everyone else is asking for updates.",
-  "Appointment notes, contacts, medication details, and daily tasks live in different places.",
-  "Family handoffs happen by memory, text threads, or rushed phone calls.",
+  "One family member becomes the default memory for medications, appointments, tasks, and daily changes.",
+  "Care handoffs happen through rushed texts, phone calls, sticky notes, or whatever someone remembers.",
+  "Doctor visits and emergency moments require a clean snapshot, but the details are scattered.",
 ];
 
 export const KIT_PAGES: KitPage[] = [
   {
     label: "01",
     title: "Start Here",
-    text: "A five-minute setup page that tells families what to fill out first.",
+    text: "A five-minute setup page that tells families which pages to fill out first.",
   },
   {
     label: "02",
-    title: "Emergency Info",
-    text: "Key contacts, care preferences, allergies, and where important records are stored.",
+    title: "Emergency Snapshot",
+    text: "Key contacts, allergies, medication basics, care preferences, and where important records are stored.",
   },
   {
     label: "03",
-    title: "Care Handoff Log",
+    title: "Daily Handoff Log",
     text: "A repeatable page for what happened today, what changed, and what needs follow-up.",
   },
   {
     label: "04",
-    title: "Appointments",
-    text: "Visit notes, questions to ask, follow-ups, and who is responsible next.",
+    title: "Doctor Visit Prep",
+    text: "Questions to ask, recent changes to mention, appointment notes, and follow-up actions.",
   },
   {
     label: "05",
-    title: "Task Tracker",
-    text: "A plain-language who-does-what page for family members and helpers.",
+    title: "Family Task Ownership",
+    text: "A plain-language who-does-what page for siblings, relatives, and helpers.",
   },
   {
     label: "06",
-    title: "Optional Sheet",
-    text: "A lightweight Google Sheet bonus only if it stays easy for buyers to copy and use.",
+    title: "Weekly Care Summary",
+    text: "A one-page review of what changed this week, what is open, and what needs a decision.",
   },
 ];
 
 export const HELP_POINTS: MarketingItem[] = [
   {
-    title: "For family caregivers",
-    text: "Built for adult children and relatives coordinating care at home, especially when several people are helping.",
+    title: "For adult children",
+    text: "Built for families coordinating care for an aging parent, especially when one person keeps becoming the update hub.",
   },
   {
-    title: "For collaborators",
-    text: "Short enough to review, practical enough to critique, and focused on what could become a clear Etsy digital product.",
+    title: "For family handoffs",
+    text: "Focused on daily changes, open loops, and the information another helper needs before stepping in.",
   },
   {
     title: "For the first listing",
@@ -67,10 +67,25 @@ export const HELP_POINTS: MarketingItem[] = [
   },
 ];
 
+export const MARKET_POINTS: MarketingItem[] = [
+  {
+    title: "Validated demand",
+    text: "Etsy has thousands of caregiver planner, caregiving log, elder care planner, and medical binder listings with visible review activity.",
+  },
+  {
+    title: "Crowded generic terms",
+    text: "Generic caregiver planners often sell as low-priced printables, so the first listing should avoid sounding like another broad binder.",
+  },
+  {
+    title: "Sharper wedge",
+    text: "Aging-parent handoff, emergency readiness, doctor visit prep, and family task ownership are more specific buyer problems to test first.",
+  },
+];
+
 export const FEEDBACK_PROMPTS: string[] = [
-  "Which pages would a real caregiver use every week?",
-  "What would make the kit clearer for siblings, hired help, or facility staff?",
-  "What should stay out so the product remains simple and low support?",
+  "Would this help a sibling, aide, or spouse step in without a long explanation?",
+  "Which page would be most useful before a doctor visit or emergency call?",
+  "What should stay out so the kit remains simple, printable, and low support?",
 ];
 
 export const DISCLAIMER =
@@ -79,14 +94,14 @@ export const DISCLAIMER =
 export const PRODUCT_DETAILS: MarketingItem[] = [
   {
     title: "Format",
-    text: "10-14 page printable PDF, with an optional simple Google Sheet bonus.",
+    text: "10-14 page printable PDF with US Letter and A4 layouts. A connected sheet or Notion version comes later only if buyers ask for it.",
   },
   {
     title: "Channel",
-    text: "Etsy-first so the first version can test buyer interest before any website, app, or broader product line.",
+    text: "Etsy-first, with a $9.99 intro price and $14.99 anchor while the listing earns real buyer signal.",
   },
   {
-    title: "Next refinement",
-    text: "Use care-sector feedback to sharpen the page list, Etsy promise, and first listing images.",
+    title: "Market position",
+    text: "More specific than a generic caregiver planner: the wedge is aging-parent handoff, emergency readiness, and family coordination.",
   },
 ];
