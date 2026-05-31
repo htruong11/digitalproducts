@@ -1,14 +1,20 @@
 import { describe, expect, it } from "vitest";
-import { KIT_PAGES, PRODUCT_SUBTITLE, PRODUCT_TITLE } from "./data";
+import {
+  HERO_POINTS,
+  KIT_PAGES,
+  PRODUCT_SUBTITLE,
+  PRODUCT_TITLE,
+} from "./data";
 import { renderHero, renderInside } from "./components";
 
 describe("site rendering", () => {
   it("renders the product title and subtitle in the hero", () => {
-    const html = renderHero(PRODUCT_TITLE, PRODUCT_SUBTITLE);
+    const html = renderHero(PRODUCT_TITLE, PRODUCT_SUBTITLE, HERO_POINTS);
 
     expect(html).toContain(PRODUCT_TITLE);
     expect(html).toContain(PRODUCT_SUBTITLE);
     expect(html).toContain("Printable PDF");
+    expect(html).toContain(HERO_POINTS[0]);
   });
 
   it("renders each kit page", () => {

@@ -9,9 +9,26 @@ export interface KitPage {
   text: string;
 }
 
+export interface StatItem {
+  value: string;
+  label: string;
+}
+
+export interface CompetitorItem {
+  cluster: string;
+  evidence: string;
+  weakness: string;
+}
+
 export const PRODUCT_TITLE = "Aging Parent Handoff Kit";
 export const PRODUCT_SUBTITLE =
   "A printable coordination kit that helps family members, aides, and doctors quickly understand what changed, what matters, and who is handling what.";
+
+export const HERO_POINTS: string[] = [
+  "Printable PDF",
+  "No app or login",
+  "Designed for family handoffs",
+];
 
 export const PROBLEM_POINTS: string[] = [
   "One family member becomes the default memory for medications, appointments, tasks, and daily changes.",
@@ -52,6 +69,21 @@ export const KIT_PAGES: KitPage[] = [
   },
 ];
 
+export const OFFER_STEPS: MarketingItem[] = [
+  {
+    title: "Fill the emergency snapshot first",
+    text: "Start with contacts, medications, allergies, care preferences, and where important documents live.",
+  },
+  {
+    title: "Use the handoff log daily",
+    text: "Capture what changed, what was done, what is still open, and what the next helper needs to know.",
+  },
+  {
+    title: "Bring a cleaner doctor visit brief",
+    text: "Use the visit prep and notes pages to keep questions, recent changes, and follow-up tasks together.",
+  },
+];
+
 export const HELP_POINTS: MarketingItem[] = [
   {
     title: "For adult children",
@@ -67,6 +99,25 @@ export const HELP_POINTS: MarketingItem[] = [
   },
 ];
 
+export const STATS: StatItem[] = [
+  {
+    value: "5,000+",
+    label: "Caregiver planner items visible on Etsy market pages",
+  },
+  {
+    value: "4,000+",
+    label: "Medical binder items competing for broad buyer intent",
+  },
+  {
+    value: "5.8k",
+    label: "Sales shown by direct competitor CompetentCaregiver",
+  },
+  {
+    value: "$9.99",
+    label: "Recommended intro price before raising the anchor",
+  },
+];
+
 export const MARKET_POINTS: MarketingItem[] = [
   {
     title: "Validated demand",
@@ -79,6 +130,63 @@ export const MARKET_POINTS: MarketingItem[] = [
   {
     title: "Sharper wedge",
     text: "Aging-parent handoff, emergency readiness, doctor visit prep, and family task ownership are more specific buyer problems to test first.",
+  },
+];
+
+export const COMPETITORS: CompetitorItem[] = [
+  {
+    cluster: "Generic caregiver planners",
+    evidence: "Large Etsy result set, many $1-$8 printable PDFs.",
+    weakness: "Crowded and easy to copy; many listings look interchangeable.",
+  },
+  {
+    cluster: "Medical binders",
+    evidence: "Large review signals and 4,000+ visible market items.",
+    weakness:
+      "Too broad for a new shop; competes with chronic illness and emergency binders.",
+  },
+  {
+    cluster: "Caregiving daily logs",
+    evidence:
+      "Clear demand for task sheets, visit logs, and home-care reports.",
+    weakness:
+      "Single-page logs are highly commoditized and hard to price above impulse-buy range.",
+  },
+  {
+    cluster: "Connected Notion systems",
+    evidence:
+      "Premium templates around $20-$30 validate the bigger system ladder.",
+    weakness: "More setup friction for stressed, nontechnical caregivers.",
+  },
+];
+
+export const VALIDATION_PLAN: MarketingItem[] = [
+  {
+    title: "First 100 qualified visits",
+    text: "If there are no sales, revise title, thumbnail, first image, and price before building another product.",
+  },
+  {
+    title: "Favorites without purchases",
+    text: "Treat that as a clarity or trust problem: improve previews, page list, and buyer-specific language.",
+  },
+  {
+    title: "Buyer questions",
+    text: "Use repeated questions to decide whether the next product should be a sheet, Notion system, or narrower printable.",
+  },
+];
+
+export const RISK_POINTS: MarketingItem[] = [
+  {
+    title: "Zero traffic",
+    text: "A new Etsy shop may not rank, even with a good product. The first listing is a distribution test.",
+  },
+  {
+    title: "Price compression",
+    text: "Many competing PDFs are cheap. The page and listing must prove why a more complete handoff kit is worth more.",
+  },
+  {
+    title: "Behavior change",
+    text: "The buyer still needs family members or helpers to use the pages. Simplicity is part of the product.",
   },
 ];
 
