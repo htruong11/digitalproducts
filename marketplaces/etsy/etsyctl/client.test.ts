@@ -3,16 +3,26 @@ import {
   ETSY_API_BASE,
   ETSY_PING_PATH,
   buildAuthHeaders,
+  parseRateLimit,
   ping,
   type FetchLike,
+  type HeadersLike,
 } from "./client";
 
 // A fake fetch that records the call and returns a scripted status + JSON body.
-function fakeFetch(status: number, body: unknown) {
+// `headers` is an optional map exposed via a Headers-like accessor.
+function fakeFetch(
+  status: number,
+  body: unknown,
+  headers?: Record<string, string>,
+) {
   const calls: { url: string; headers?: Record<string, string> }[] = [];
+  const headersLike: HeadersLike | undefined = headers
+    ? { get: (name) => headers[name.toLowerCase()] ?? null }
+    : undefined;
   const impl: FetchLike = async (url, init) => {
     calls.push({ url, headers: init?.headers });
-    return { status, json: async () => body };
+    return { status, json: async () => body, headers: headersLike };
   };
   return { impl, calls };
 }
@@ -25,9 +35,58 @@ describe("buildAuthHeaders", () => {
     });
   });
 
+  it("adds a Bearer Authorization header when an access token is given", () => {
+    expect(buildAuthHeaders("key123", "tok_abc")).toEqual({
+      "x-api-key": "key123",
+      Accept: "application/json",
+      Authorization: "Bearer tok_abc",
+    });
+  });
+
+  it("omits Authorization for a blank access token", () => {
+    expect(buildAuthHeaders("key123", "   ")).not.toHaveProperty(
+      "Authorization",
+    );
+  });
+
   it("throws on a missing or blank key", () => {
     expect(() => buildAuthHeaders("")).toThrow(/required/i);
     expect(() => buildAuthHeaders("   ")).toThrow(/required/i);
+  });
+});
+
+describe("parseRateLimit", () => {
+  it("parses the documented rate-limit headers", () => {
+    const headers: HeadersLike = {
+      get: (name) =>
+        ({
+          "x-limit-per-second": "5",
+          "x-remaining-this-second": "4",
+          "x-limit-per-day": "5000",
+          "x-remaining-today": "4990",
+          "retry-after": "2",
+        })[name.toLowerCase()] ?? null,
+    };
+    expect(parseRateLimit(headers)).toEqual({
+      limitPerSecond: 5,
+      remainingThisSecond: 4,
+      limitPerDay: 5000,
+      remainingToday: 4990,
+      retryAfterSeconds: 2,
+    });
+  });
+
+  it("leaves fields undefined when headers are absent or non-numeric", () => {
+    const headers: HeadersLike = {
+      get: (name) => (name.toLowerCase() === "x-limit-per-day" ? "oops" : null),
+    };
+    expect(parseRateLimit(headers)).toEqual({
+      limitPerSecond: undefined,
+      remainingThisSecond: undefined,
+      limitPerDay: undefined,
+      remainingToday: undefined,
+      retryAfterSeconds: undefined,
+    });
   });
 });
 
@@ -84,6 +143,27 @@ describe("ping (mocked transport)", () => {
     const result = await ping({ apiKey: "key123", fetchImpl: impl });
 
     expect(result.ok).toBe(false);
+  });
+
+  it("surfaces rate-limit headers when the transport exposes them", async () => {
+    const { impl } = fakeFetch(
+      200,
+      { application_id: 4242 },
+      { "x-limit-per-day": "5000", "x-remaining-today": "4999" },
+    );
+
+    const result = await ping({ apiKey: "key123", fetchImpl: impl });
+
+    expect(result.rateLimit?.limitPerDay).toBe(5000);
+    expect(result.rateLimit?.remainingToday).toBe(4999);
+  });
+
+  it("leaves rateLimit undefined when the transport omits headers", async () => {
+    const { impl } = fakeFetch(200, { application_id: 4242 });
+
+    const result = await ping({ apiKey: "key123", fetchImpl: impl });
+
+    expect(result.rateLimit).toBeUndefined();
   });
 });
 

@@ -56,7 +56,7 @@ export const TAG_LEN_MAX = 20;
 export const PRICE_MIN = 0.2; // Etsy minimum listing price (USD)
 
 // Claims that create medical/legal/financial liability for an organizer product.
-const RISKY_CLAIM =
+export const RISKY_CLAIM =
   /\b(treat(?:s|ment)?|cures?|heal(?:s|ing)?|diagnos\w*|prevent(?:s|ion)?|reduce risk|warning signs?|red flags?|recovery protocol|clinically proven|doctor recommended|medically approved|dosage|when to call (?:911|the doctor)|prescri\w*|HIPAA[-\s]?compliant|guarantee\w*|FDA[-\s]?approved|legal advice|attorney[-\s]?grade|legally binding|guarantees compliance|probate guide|how to probate|tax advice|avoid probate|court[-\s]?approved|settle (?:an|the) estate|coverage advice|policy interpretation|claim valuation|payout promise|state[-\s]?compliant|survey[-\s]?ready)\b/i;
 // A non-advice disclaimer keeps the product positioned as an organizer.
 const DISCLAIMER =
@@ -80,6 +80,10 @@ export function buildDraftListingPayload(
     payload.tags = input.tags;
   }
   return payload;
+}
+
+export function findRiskyClaims(texts: string[]): string[] {
+  return texts.filter((text) => RISKY_CLAIM.test(text));
 }
 
 /**
@@ -151,7 +155,7 @@ export function validateDraftListing(
     warn("image_missing", "Listing has no image.");
   }
   const text = `${input.title ?? ""}\n${input.description ?? ""}`;
-  if (RISKY_CLAIM.test(text)) {
+  if (findRiskyClaims([text]).length > 0) {
     err(
       "risky_claim",
       "Copy contains a medical/legal/financial claim that must be removed.",

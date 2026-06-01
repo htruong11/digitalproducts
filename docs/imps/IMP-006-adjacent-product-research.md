@@ -374,11 +374,11 @@ Claude's key policy feedback:
        medical-claims policies.
 6. [x] Add a pre-listing AI disclosure and claims-review gate.
 7. [x] Add publish / de-risk matrix for every researched product idea.
-8. [ ] Build the 10-14 page Hospital-to-Home Discharge Kit PDF.
-9. [ ] Draft the Etsy listing title, tags, description, FAQ, and 6-8 listing
-       images from the real pages.
-10. [ ] Reassess after 100 qualified views or 10 sales.
-11. [ ] If the discharge kit gets signal, build the Executor First 30 Days Estate
+8. [x] Build the 10-14 page Hospital-to-Home Discharge Kit PDF source.
+9. [x] Draft the Etsy listing title, tags, description, and FAQ.
+10. [ ] Create 6-8 Etsy listing images from the real generated pages.
+11. [ ] Reassess after 100 qualified views or 10 sales.
+12. [ ] If the discharge kit gets signal, build the Executor First 30 Days Estate
         Admin Kit as the higher-ticket next product.
 
 ## References & Research

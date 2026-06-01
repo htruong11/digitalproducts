@@ -2,20 +2,20 @@
 
 Planning and production workspace for small digital products.
 
-## Structure
+## Project Structure
 
-- `site/` - current Vite/TypeScript internal product page.
-- `products/caregiver-command-kit/` - source material and generated assets for the caregiver MVP.
-- `marketplaces/etsy/` - Etsy listing copy, research notes, and support snippets. Keep account, payout, tax, 2FA, tokens, and cookies out of git.
-- `docs/imps/` - decision and planning IMPs.
-- `docs/research/` - durable research summaries that are useful beyond a single IMP.
-- `scripts/` - lightweight automation as product generation needs become real.
+- `site/` - current Vite/TypeScript internal product marketing site.
+- `products/` - individual product workspaces (definition, content, output).
+- `marketplaces/` - channel-specific drafts and tooling (e.g., Etsy).
+- `docs/` - decision logs, strategy (IMPs), and research resources.
+- `scripts/` - automation for product generation and building.
 
-## Commands
+## Agent Documentation
 
-- `npm run dev` - start the site locally.
-- `npm run typecheck` - run TypeScript checks.
-- `npm run lint` - run ESLint.
-- `npm run format:check` - check Prettier formatting.
-- `npm test` - run basic tests.
-- `npm run quality` - run the full local quality gate.
+For AI agents working on this project, please consult **[AGENTS.md](./AGENTS.md)** for operational instructions, research mandates, and compliance protocols.
+
+## Getting Started
+
+1. `npm install`
+2. `npm run dev` - start the internal site locally to preview marketing copy and design.
+3. `npm run product:pdf <slug>` - generate the print-ready PDF and Etsy listing drafts for a specific product.

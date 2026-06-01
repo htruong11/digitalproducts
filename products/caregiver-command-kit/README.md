@@ -1,15 +1,22 @@
-# Hospital-to-Home Discharge Kit
+# Caregiver Command Kit
 
-Product workspace for the caregiver MVP now narrowed by
-`docs/imps/IMP-006-adjacent-product-research.md`.
+Historical workspace for the broad caregiver MVP language from IMP-001 through
+IMP-005.
+
+Do not use this as the public product name. New work should live in:
+
+- `../hospital-to-home-discharge-kit/` for the first Etsy listing.
+- `../aging-parent-handoff-kit/` for the companion product.
 
 Publish status:
 
 - **Hospital-to-Home Discharge Kit:** ready to build and publish after the
   standard claims scrub.
 - **Aging Parent Handoff Kit:** ready as the companion product after scrub.
-- **Executor First 30 Days Estate Admin Kit:** do not build here; needs legal
-  de-risking first.
+- **Care Pact Sibling Coordination Kit:** ready as the next caregiver-library
+  PDF after scrub and listing image review.
+- **Executor First 30 Days Estate Admin Kit:** drafted in its own workspace but
+  launch-parked until legal-adjacent claims are reviewed.
 - **Small assisted-living operator forms:** blocked for now.
 
 - `content/` - source copy for the PDF kit.

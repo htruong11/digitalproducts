@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   buildDraftListingPayload,
+  findRiskyClaims,
   validateDraftListing,
   type DraftListingInput,
 } from "./draft-listing";
@@ -101,6 +102,16 @@ describe("validateDraftListing", () => {
     const result = validateDraftListing(input);
     expect(result.valid).toBe(false);
     expect(result.issues.map((i) => i.code)).toContain("risky_claim");
+  });
+
+  it("can scan product page copy before it becomes a listing", () => {
+    const hits = findRiskyClaims([
+      "Record the care team's instructions.",
+      "Doctor recommended recovery protocol with red flags.",
+    ]);
+
+    expect(hits).toHaveLength(1);
+    expect(hits[0]).toContain("recovery protocol");
   });
 
   it("blocks medical triage and recovery language", () => {
